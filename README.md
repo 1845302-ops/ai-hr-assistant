@@ -112,6 +112,7 @@ Recommendation:
 AI-generated evaluations are intended to support recruiter decision-making and should always be reviewed by a human.
 # Project Structure
 
+```
 ai-hr-assistant/
 │
 ├── flowise/
@@ -122,6 +123,7 @@ ai-hr-assistant/
 │   └── example-output.png
 │
 └── README.md
+```
 
 # Installation
 
