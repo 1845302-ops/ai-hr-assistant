@@ -104,10 +104,10 @@ The agent evaluates candidates using predefined criteria and generates an overal
 The recommendation is deterministically mapped to the Overall Score using predefined thresholds.
 
 Recommendation:
-**85 - 100**`Strong Hire`
-**70 - 84** `Hire`
-**50 - 69** `Consider`
-**0 - 49** `Reject`
+* **85 - 100**`Strong Hire`
+* **70 - 84** `Hire`
+* **50 - 69** `Consider`
+* **0 - 49** `Reject`
 
 AI-generated evaluations are intended to support recruiter decision-making and should always be reviewed by a human.
 # Project Structure
