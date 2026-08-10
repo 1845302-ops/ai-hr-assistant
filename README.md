@@ -8,7 +8,7 @@
 AI HR Assistant is an AI-powered recruitment assistant that analyzes one or multiple candidate resumes, evaluates candidates against predefined criteria, and generates personalized interview questions.
 The project is built on Flowise and uses LLM + Retrieval + Structured output.
 
-Features
+# Features
 
 - Analyze a single resume
 - Analyze multiple resumes simultaneously
