@@ -1,11 +1,12 @@
 # ai-hr-assistant
 
 ![Flowise AI](https://img.shields.io/badge/Flowise-AI-blue)
-![OpenAI](https://img.shields.io/badge/OpenAI-GPT--5.4--mini-green)
+![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o-green)
 ![RAG](https://img.shields.io/badge/RAG-enabled-orange)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 AI HR Assistant is an AI-powered recruitment assistant that analyzes one or multiple candidate resumes, evaluates candidates against predefined criteria, and generates personalized interview questions.
+
 The project is built on Flowise and uses LLM + Retrieval + Structured output.
 
 # Features
@@ -42,6 +43,7 @@ It generated:
 ![Example Output](screenshots/example-output.png)
 # Architecture
 
+```
 Resume PDF(s)
       ↓
 Recursive Character Text Splitter
@@ -58,7 +60,9 @@ ChatOpenAI
       ↓
 Structured Output Parser
       ↓
-Candidate Evaluation JSON
+Candidate Evaluation JSON 
+```
+
 
 # Tech Stack
 
@@ -75,20 +79,28 @@ Candidate Evaluation JSON
 
 The knowledge source is provided dynamically through uploaded candidate resumes in PDF format.
 
-Input:
-Candidate(s) Resume (PDF)
-Job description
+Evaluation Input:
+
+* Candidate(s) Resume (PDF)
+* Job description
+
+The agent can evaluate candidates against:
+
+- a provided job description; or
+- standard industry requirements when no job description is provided.
 
 Processing:
+
 PDF → Text → Chunks → Embeddings → Vector Store
 
 Retrieval:
+
 Relevant resume information → LLM
 
 Output: 
 - Ranked candidate list
 - Individual scores
-- Hiring recommendationv
+- Hiring recommendation
 
 # Evaluation Logic
 
@@ -104,10 +116,12 @@ The agent evaluates candidates using predefined criteria and generates an overal
 The recommendation is deterministically mapped to the Overall Score using predefined thresholds.
 
 Recommendation:
-* **85 - 100**`Strong Hire`
-* **70 - 84** `Hire`
-* **50 - 69** `Consider`
-* **0 - 49** `Reject`
+| Overall Score | Recommendation |
+|---|---|
+| 85–100 | Strong Hire |
+| 70–84 | Hire |
+| 50–69 | Consider |
+| 0–49 | Reject |
 
 AI-generated evaluations are intended to support recruiter decision-making and should always be reviewed by a human.
 # Project Structure
@@ -151,23 +165,10 @@ Multiple candidates
 
 For example, ask an agent: "Evaluate these three candidates for the Project Manager position."
 
-Candidate A
-Skills Match: 85
-Experience Match: 78
-Education Match: 80
-Overall Score: 82
-Recommendation: Hire
-
-Candidate B
-...
-
-Candidate C
-...
-
 **Output (JSON / Summary):**
-- **Candidate A:** Overall Score 82/100 (`Hire`) 
-- **Candidate B:** Overall Score 91/100 (`Strong Hire`) 
-- **Candidate C:** Overall Score 45/100 (`Reject`)
+- **Candidate A:** Overall Score 82/100 - `Hire` 
+- **Candidate B:** Overall Score 91/100 - `Strong Hire` 
+- **Candidate C:** Overall Score 45/100 - `Reject`
 
 Also, when making a request, the agent can indicate the candidate's strengths and weaknesses and generate interview questions for the selected candidate.
 
